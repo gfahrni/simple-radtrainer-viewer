@@ -62,6 +62,46 @@ DATA_FOLDER/
 - Only folders containing DICOM files (`.dcm`, `.dicom`) are recognized as datasets.
 
 ---
+## Installation
+
+## Installation
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/gfahrni/simple-radtrainer-viewer.git
+cd simple-radtrainer-viewer
+```
+2. **Create a Python virtual environment (recommended):**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate   # macOS / Linux
+venv\Scripts\activate      # Windows
+````
+
+3. **Install required packages**
+
+```bash
+pip install --upgrade pip
+pip install kivy pydicom numpy pillow
+````
+
+4. **Set your dataset folder in config.py:**
+
+```bash
+DATA_FOLDER = "/path/to/your/DICOM/datasets"
+```
+
+5. **Run the application**
+
+```bash
+python main.py
+````
+
+*Note: Make sure your datasets follow the 2-level folder structure described above.*
+
+
 
 ## License
 
