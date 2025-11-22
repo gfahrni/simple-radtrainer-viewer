@@ -20,6 +20,7 @@ It allows users to select a dataset of DICOM series, navigate through image slic
 
 ## Project Structure
 
+```
 Project-RadTrainer/
 │
 ├── config.py                # Configuration (dataset folder path)
@@ -39,13 +40,14 @@ Project-RadTrainer/
 │   ├── viewer_state.py      # Manage loaded images and current slice
 │   ├── texture_utils.py     # Convert PIL images to Kivy textures
 │   ├── series_loader.py     # Load and sort DICOM series by anatomical position
-
+```
 ---
 
 ## Dataset Folder Structure
 
 RadTrainer expects a **2-level folder structure**:
 
+```
 DATA_FOLDER/
 ├── Folder_1/
 │ ├── Dataset_A/
@@ -53,6 +55,7 @@ DATA_FOLDER/
 ├── Folder_2/
 │ ├── Dataset_C/
 │ ├── Dataset_D/
+```
 
 - **Folders** appear in the **left column** of the main screen.  
 - **Datasets** inside the selected folder appear in the **center column**.  
