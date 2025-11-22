@@ -24,8 +24,10 @@ It allows users to select a dataset of DICOM series, navigate through image slic
 Project-RadTrainer/
 │
 ├── config.py                # Configuration (dataset folder path)
+├── LICENCE                  # MIT License
 ├── main.py                  # Application entry point
 ├── README.md                # Project documentation
+├── requirements.txt         # dependencies
 │
 ├── screens/                 # Kivy screens (UI)
 │   ├── main_screen.py       # Folder and dataset selection logic
