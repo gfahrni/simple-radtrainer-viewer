@@ -50,11 +50,11 @@ RadTrainer expects a **2-level folder structure**:
 ```
 DATA_FOLDER/
 ├── Folder_1/
-│ ├── Dataset_A/
-│ ├── Dataset_B/
+│   ├── Dataset_A/
+│   ├── Dataset_B/
 ├── Folder_2/
-│ ├── Dataset_C/
-│ ├── Dataset_D/
+│   ├── Dataset_C/
+│   ├── Dataset_D/
 ```
 
 - **Folders** appear in the **left column** of the main screen.  
