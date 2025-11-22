@@ -1,0 +1,84 @@
+# === screens/dicom_screen.kv ===
+# DICOM viewer screen layout for RadTrainer application
+# Displays medical images with navigation controls and slice slider
+
+<DicomScreen>:
+    # Root layout: vertical split between image area and controls
+    BoxLayout:
+        orientation: "vertical"  # Stack children vertically
+
+        # --- Upper layout (image display + slice navigation) ---
+        BoxLayout:
+            orientation: "horizontal"  # Split image and slider side by side
+            size_hint: 1, 0.90  # Take 90% of vertical space
+            # Semi-transparent dark background for image area
+            canvas.before:
+                Color:
+                    rgba: 0.1, 0.1, 0.1, 0.8  # Very dark gray with transparency
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            # --- Left layout (DICOM image display) ---
+            BoxLayout:
+                orientation: "vertical"  # Stack children vertically
+                size_hint: 0.90, 1  # Take 90% of horizontal space
+                # Subtle background for image container
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.2, 0.2, 0.3  # Medium gray, very transparent
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                # Main image widget for displaying DICOM slices
+                Image:
+                    id: dicom_image  # ID for texture updates
+                    allow_stretch: True  # Allow image to fill available space
+                    keep_ratio: True  # Maintain aspect ratio when stretching
+                    
+                    # Mouse/touch event handlers for slice navigation
+                    # These call Python methods with widget reference and touch info
+                    on_touch_down: root.on_image_touch_down(self, args[1])
+                    on_touch_move: root.on_image_touch_move(self, args[1])
+                    on_touch_up: root.on_image_touch_up(self, args[1])
+
+            # --- Right layout (slice slider) ---
+            BoxLayout:
+                orientation: "vertical"  # Stack children vertically
+                size_hint: 0.10, 1  # Take 10% of horizontal space
+                # Dark background for slider area
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.2, 0.2, 0.8  # Medium gray background
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                # Vertical slider for slice navigation
+                Slider:
+                    id: slice_slider  # ID for value updates
+                    min: 0  # Minimum value (first slice)
+                    max: 1  # Maximum value (updated when images load)
+                    value: 0  # Current position (starts at first slice)
+                    orientation: "vertical"  # Vertical orientation for slice navigation
+                    on_value: root.on_slider_change(self, self.value)  # Callback on value change
+
+        # --- Bottom layout (control buttons) ---
+        BoxLayout:
+            orientation: "horizontal"  # Arrange buttons side by side
+            size_hint: 1, 0.10  # Take 10% of vertical space
+            # Dark background for control bar
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.15, 1  # Dark gray background
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            # Back button to return to main screen
+            Button:
+                text: "Back"  # button label
+                size_hint: None, None  # Fixed size
+                size: dp(100), dp(50)  # Width 100dp, height 50dp
+                on_release: root.go_back()  # Call Python method to switch screens

@@ -1,0 +1,118 @@
+# === screens/main_screen.kv ===
+# Main screen layout for RadTrainer application
+# Provides dataset selection interface with folder list on the left,
+# datasets in the center and start button at the bottom
+
+<MainScreen>:
+    BoxLayout:
+        orientation: "horizontal"
+
+        # ------------------------------------------------------------------
+        # LEFT COLUMN : FOLDER LIST
+        # ------------------------------------------------------------------
+        BoxLayout:
+            id: folders_column
+            orientation: "vertical"
+            size_hint_x: 0.20
+            padding: 10
+            spacing: 10
+
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.15, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Folders"
+                size_hint_y: None
+                height: "40dp"
+                font_size: "18sp"
+                bold: True
+
+            ScrollView:
+                size_hint_y: 1
+                bar_width: 10
+
+                GridLayout:
+                    id: folder_list           # <-- Python populates this
+                    cols: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: 5
+                    padding: 5
+
+        # ------------------------------------------------------------------
+        # RIGHT COLUMN (DATASETS + START BUTTON)
+        # ------------------------------------------------------------------
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_x: 0.80
+            spacing: 0
+
+            # ----------------------------
+            # DATASET LIST
+            # ----------------------------
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: 0.80
+                padding: 20
+                spacing: 10
+
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: "Datasets"
+                    size_hint_y: None
+                    height: "40dp"
+                    font_size: "18sp"
+                    bold: True
+
+                Label:
+                    id: selected_label
+                    text: "Selected dataset: " + app.selected_file_name
+                    size_hint_y: None
+                    height: "40dp"
+                    font_size: "16sp"
+
+                ScrollView:
+                    size_hint_y: 1
+                    bar_width: 10
+
+                    GridLayout:
+                        id: dataset_list      # <-- Python populates this
+                        cols: 1
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: 10
+                        padding: 20
+
+            # ----------------------------
+            # START BUTTON
+            # ----------------------------
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: 0.20
+                padding: 20
+                spacing: 10
+
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Button:
+                    text: "START"
+                    font_size: "30sp"
+                    size_hint: None, None
+                    size: 250, 120
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    on_release: root.go_to_dicom()
