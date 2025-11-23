@@ -18,6 +18,8 @@ It allows users to select a dataset of DICOM series, navigate through image slic
   - Vertical slider
 - Maintains viewer state for current slice and loaded images.
 - Supports multiple screens (folder/dataset selection and DICOM viewer).
+- Applies DICOM windowing automatically when displaying images (uses Window Center/Width from metadata).
+
 
 ---
 
@@ -39,6 +41,7 @@ Project-RadTrainer/
 │   ├── dicom_screen.kv      # DICOM viewer layout
 │
 ├── dicom_viewer/            # Core DICOM processing modules
+│   ├── dicom_windowing.py   # Apply DICOM windowing using metadata
 │   ├── image_processor.py   # Load DICOM and convert to PIL images
 │   ├── mouse_controller.py  # Handle mouse/scroll input
 │   ├── orientation.py       # Correct DICOM slice orientation
