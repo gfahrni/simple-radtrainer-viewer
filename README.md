@@ -1,5 +1,7 @@
 # RadTrainer
 
+[GitHub Repository](https://github.com/gfahrni/simple-radtrainer-viewer)  
+
 RadTrainer is a Python application built with **Kivy** to visualize DICOM medical images.  
 It allows users to select a dataset of DICOM series, navigate through image slices using a slider, mouse wheel, or drag interactions, and view the images with correct anatomical orientation.
 
